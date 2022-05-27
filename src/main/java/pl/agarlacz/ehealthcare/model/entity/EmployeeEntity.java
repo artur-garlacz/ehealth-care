@@ -1,19 +1,16 @@
-package pl.agarlacz.ehealthcare.model;
+package pl.agarlacz.ehealthcare.model.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.agarlacz.ehealthcare.model.enums.EmployeeRole;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "users")
-public class UserEntity {
+@Table(name = "employees")
+public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -25,4 +22,5 @@ public class UserEntity {
     private String lastName;
     @Column(name = "password", nullable = false)
     private String password;
+    private EmployeeRole employeeRole;
 }

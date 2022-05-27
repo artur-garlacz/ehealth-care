@@ -2,10 +2,10 @@ package pl.agarlacz.ehealthcare.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import pl.agarlacz.ehealthcare.model.UserEntity;
+import pl.agarlacz.ehealthcare.model.entity.UserEntity;
 import pl.agarlacz.ehealthcare.repository.UserRepository;
-import pl.agarlacz.ehealthcare.request.UserLoginRequest;
-import pl.agarlacz.ehealthcare.request.UserRegisterRequest;
+import pl.agarlacz.ehealthcare.request.user.UserLoginRequest;
+import pl.agarlacz.ehealthcare.request.user.UserRegisterRequest;
 import pl.agarlacz.ehealthcare.response.UserActionResponse;
 import pl.agarlacz.ehealthcare.response.UserCheckResponse;
 
@@ -33,6 +33,17 @@ public class AuthenticationService {
 
     public Long getLoggedUserId(HttpServletRequest request) {
         return this.getLoggedUserId(request.getSession());
+    }
+
+    public Optional<UserEntity> getLoggedUser(HttpServletRequest request) {
+        Long loggedUserId = getLoggedUserId(request);
+
+        if(loggedUserId == null) return null;
+
+        Optional<UserEntity> userOptional = this.usersRepository.findById(loggedUserId);
+        if(userOptional == null) return null;
+
+        return userOptional;
     }
 
     public UserCheckResponse checkUser(HttpServletRequest request) {

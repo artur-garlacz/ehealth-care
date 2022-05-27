@@ -1,6 +1,6 @@
 package pl.agarlacz.ehealthcare.response;
 
-import pl.agarlacz.ehealthcare.model.UserEntity;
+import pl.agarlacz.ehealthcare.model.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

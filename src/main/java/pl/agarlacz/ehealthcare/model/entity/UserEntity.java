@@ -1,6 +1,8 @@
-package pl.agarlacz.ehealthcare.model;
+package pl.agarlacz.ehealthcare.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,7 +10,10 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class EmployeeEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,5 +25,7 @@ public class EmployeeEntity {
     private String lastName;
     @Column(name = "password", nullable = false)
     private String password;
-    private EmployeeRole employeeRole;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "userId", updatable = false, insertable = false)
+    private PatientDetailsEntity patientDetails;
 }

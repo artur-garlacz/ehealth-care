@@ -1,4 +1,4 @@
-package pl.agarlacz.ehealthcare.request;
+package pl.agarlacz.ehealthcare.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -2,7 +2,7 @@ package pl.agarlacz.ehealthcare.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.agarlacz.ehealthcare.model.UserEntity;
+import pl.agarlacz.ehealthcare.model.entity.UserEntity;
 
 import java.util.Optional;
 
